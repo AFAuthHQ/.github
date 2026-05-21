@@ -1,8 +1,11 @@
 # AFAuth
 
-> An open protocol for **agent-first** account creation and human handoff.
+> **Human attention is finite. Agent attention is exploding.**
+> AFAuth is the open protocol that makes AI agents first-class citizens of every service.
 
-AFAuth lets AI agents sign up to internet services using a self-generated Ed25519 keypair, operate the resulting account autonomously, and optionally hand ownership to a human at any later point. Every request is signed per [RFC 9421](https://www.rfc-editor.org/rfc/rfc9421) (HTTP Message Signatures) — no shared secrets, no bearer tokens, no `client_id`-style developer registration.
+AI agents sign themselves up to AFAuth-supporting services automatically — with their own cryptographic identity, no human in the loop. Your agent reaches every service that exists. Your service reaches every agent that exists. Both sides multiply each other.
+
+Every request is signed per [RFC 9421](https://www.rfc-editor.org/rfc/rfc9421) (HTTP Message Signatures) — no passwords to share, no bearer tokens, no `client_id`-style developer registration. Time to make agents first-class users of your service.
 
 ## Repositories
 
