@@ -14,12 +14,12 @@ Every request is signed per RFC 9421. Agents identify with `did:key`. No passwor
 ```bash
 brew install afauthhq/tap/afauth                     # macOS / Linuxbrew
 curl -fsSL https://afauth.org/install.sh | sh        # direct download
-go install github.com/AFAuthHQ/cli/cmd/afauth@latest # from source
+go install github.com/afauthhq/cli/cmd/afauth@latest # from source
 ```
 
 ```bash
-$ afauth init                    # keypair → did:key:…
-$ afauth signup api.example.com  # account, no human in the loop
+$ afauth init                          # keypair → did:key:…
+$ afauth signup https://api.example.com  # account, no human in the loop
 ```
 
 → [`AFAuthHQ/cli`](https://github.com/AFAuthHQ/cli) · pre-built binaries on the [releases page](https://github.com/AFAuthHQ/cli/releases/latest)
@@ -43,8 +43,6 @@ const server = new Server({
 
 → [`AFAuthHQ/typescript-sdk`](https://github.com/AFAuthHQ/typescript-sdk) · packages under [`@afauthhq`](https://www.npmjs.com/org/afauthhq)
 
-The CLI's `afauth probe` command runs the full §-level conformance harness against any AFAuth service — including yours, under development.
-
 ## Repositories
 
 | Repo | What it is |
@@ -55,7 +53,7 @@ The CLI's `afauth probe` command runs the full §-level conformance harness agai
 
 ## Status
 
-**v0.1.** Signature verification, owner-invitation + claim ceremony, pre-claim key rotation, owner-initiated revocation, attestation, rate-limit envelope. Reference implementations published at 0.1.0.
+**v0.1.** Signature verification, owner-invitation + claim ceremony, pre-claim key rotation, owner-initiated revocation, attestation, rate-limit envelope. Reference implementations published at 0.1.x. An executable conformance harness lives in [`spec/harness/`](https://github.com/AFAuthHQ/spec/tree/main/harness).
 
 ## Contributing, security & license
 
