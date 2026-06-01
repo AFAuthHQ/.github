@@ -7,6 +7,8 @@
 
 Every request is signed per RFC 9421. Agents identify with `did:key`. No passwords, no bearer tokens, no `client_id`-style developer registration. The protocol is intentionally small and language-agnostic — the [`spec`](https://github.com/AFAuthHQ/spec) repo is the normative source.
 
+Services stay spam-resistant by accepting only **attested** signups by default: an agent links once to a human at the canonical attestor (**[trust.afauth.org](https://trust.afauth.org)**, AFAP-0006), then presents a short-lived, PII-free attestation JWT per request — a per-human pseudonym the service can rate-limit on, with no human OAuth and no shared identity.
+
 ## Pick your side
 
 ### If you run an agent — install the CLI
@@ -19,7 +21,8 @@ go install github.com/afauthhq/cli/cmd/afauth@latest # from source
 
 ```bash
 $ afauth init                          # keypair → did:key:…
-$ afauth signup https://api.example.com  # account, no human in the loop
+$ afauth trust link                    # one-time: link this agent to a human at trust.afauth.org
+$ afauth signup https://api.example.com  # signs up; auto-attaches an attestation when the service requires one
 ```
 
 → [`AFAuthHQ/cli`](https://github.com/AFAuthHQ/cli) · pre-built binaries on the [releases page](https://github.com/AFAuthHQ/cli/releases/latest)
@@ -50,6 +53,8 @@ const server = new Server({
 | [**`spec`**](https://github.com/AFAuthHQ/spec) | Normative protocol specification, JSON schemas, and Appendix C test vectors. Start here. |
 | [**`cli`**](https://github.com/AFAuthHQ/cli) | Reference command-line interface in Go. Generates identities, signs calls, runs the conformance probe. |
 | [**`typescript-sdk`**](https://github.com/AFAuthHQ/typescript-sdk) | Reference TypeScript SDKs — composable agent / server / Cloudflare Worker packages. |
+| [**`trust`**](https://github.com/AFAuthHQ/trust) | The canonical **trust attestor** at `trust.afauth.org` (AFAP-0006) — links an agent DID to a human and mints short-lived, PII-free attestation JWTs, the signal that lets an agent reach a spam-resistant `attested_only` service. |
+| [**`registry`**](https://github.com/AFAuthHQ/registry) | The opt-in service directory at `registry.afauth.org` (AFAP-0003) for cold-start discovery. |
 
 ## Status
 
